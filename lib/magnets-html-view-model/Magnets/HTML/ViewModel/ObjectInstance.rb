@@ -5,6 +5,20 @@ module ::Magnets::HTML::ViewModel::ObjectInstance
 
   include ::CascadingConfiguration::Array::Unique
 
+  ############################
+  #  __configure_bindings__  #
+  ############################
+
+  def __configure_bindings__
+    
+    __bindings__.each do |this_binding_name, this_binding_instance|
+      unless this_binding_instance.__pathmap__
+        this_binding_instance.__configure_container__
+      end
+    end
+    
+  end
+
 	###################
   #  __pathstack__  #
   ###################
@@ -41,6 +55,7 @@ module ::Magnets::HTML::ViewModel::ObjectInstance
 
     	      # lazy initialize binding (and run config proc)
     	      this_binding_instance.__initialize_container__( true )
+            this_binding_instance.__configure_container__
 
     	      # render
     	      html_node = super( document_frame, container_node, this_binding_instance )
@@ -60,6 +75,7 @@ module ::Magnets::HTML::ViewModel::ObjectInstance
 
     	      # lazy initialize binding (and run config proc)
     	      binding_instance.__initialize_container__( true )
+            binding_instance.__configure_container__
 
     	      # render
     	      html_node = super
