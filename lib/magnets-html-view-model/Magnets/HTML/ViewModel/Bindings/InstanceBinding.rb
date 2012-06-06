@@ -24,11 +24,11 @@ module ::Magnets::HTML::ViewModel::Bindings::InstanceBinding
     
   end
 
-  #########################
-  #  render_value_valid?  #
-  #########################
+  #########################################
+  #  __validate_binding_name_for_order__  #
+  #########################################
   
-  def render_value_valid?( binding_name )
+  def __validate_binding_name_for_order__( binding_name )
 
     case binding_name
       
