@@ -23,7 +23,7 @@ module ::Magnets::HTML::ViewModel::ObjectInstance
   #  __pathstack__  #
   ###################
 
-  attr_configuration_unique_array  :__pathstack__ do
+  attr_unique_array  :__pathstack__ do
 
     #======================#
 	  #  child_pre_set_hook  #
@@ -41,7 +41,10 @@ module ::Magnets::HTML::ViewModel::ObjectInstance
   #  __render_binding__  #
   ########################
   
-	def __render_binding__( document_frame, container_node, binding_instance )
+	def __render_binding__( document_frame, 
+	                        container_node, 
+	                        binding_instance, 
+	                        view_rendering_empty = @__view_rendering_empty__ )
     
     html_node = nil
     

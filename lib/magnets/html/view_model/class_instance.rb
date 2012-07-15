@@ -1,7 +1,7 @@
 
 module ::Magnets::HTML::ViewModel::ClassInstance
 
-  ::Magnets::Bindings::Attributes.define_container_type( :HTML_view_model, :HTML_view )
+  ::Magnets::Bindings::Attributes.define_container_type( :HTML_view_model, true, :HTML_view )
   
   include ::Magnets::Bindings::AttributeContainer::HTMLViewModel
   

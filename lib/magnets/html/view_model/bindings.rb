@@ -3,8 +3,6 @@ module ::Magnets::HTML::ViewModel::Bindings
   
   include ::CascadingConfiguration::Setting
   
-  ccm = ::CascadingConfiguration::Methods
-
   ##################
   #  __pathmap__   #
   #  __pathmap__=  #
@@ -12,6 +10,6 @@ module ::Magnets::HTML::ViewModel::Bindings
 
   attr_configuration :__pathmap__
   
-  ccm.alias_module_and_instance_methods( self, :pathmap, :__pathmap__ )
+  Controller.alias_module_and_instance_methods( :pathmap, :__pathmap__ )
   
 end
