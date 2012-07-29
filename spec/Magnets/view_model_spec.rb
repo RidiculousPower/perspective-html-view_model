@@ -1,7 +1,7 @@
 
-require_relative '../../lib/magnets-html-view-model.rb'
+require_relative '../../lib/magnets-html-view_model.rb'
 
-require_relative '../../../elements/lib/magnets-html-elements.rb'
+require_relative '../../../magnets-html-elements/lib/magnets-html-elements.rb'
 
 describe ::Magnets::HTML::ViewModel do
   

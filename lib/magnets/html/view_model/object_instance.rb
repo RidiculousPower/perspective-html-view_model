@@ -77,7 +77,7 @@ module ::Magnets::HTML::ViewModel::ObjectInstance
     	    if pathmap.match( ::Magnets.request.path )
 
     	      # lazy initialize binding (and run config proc)
-    	      binding_instance.__initialize_container__( true )
+    	      binding_instance.__initialize_container__
             binding_instance.__configure_container__
 
     	      # render
