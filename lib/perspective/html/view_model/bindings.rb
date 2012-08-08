@@ -1,5 +1,5 @@
 
-module ::Magnets::HTML::ViewModel::Bindings
+module ::Perspective::HTML::ViewModel::Bindings
   
   include ::CascadingConfiguration::Setting
   

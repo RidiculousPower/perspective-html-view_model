@@ -1,9 +1,9 @@
 
-module ::Magnets::HTML::ViewModel::ClassInstance
+module ::Perspective::HTML::ViewModel::ClassInstance
 
-  ::Magnets::Bindings::Attributes.define_container_type( :HTML_view_model, true, :HTML_view )
+  ::Perspective::Bindings::Attributes.define_container_type( :HTML_view_model, true, :HTML_view )
   
-  include ::Magnets::Bindings::AttributeContainer::HTMLViewModel
+  include ::Perspective::Bindings::AttributeContainer::HTMLViewModel
   
   ##################
   #  attr_pathmap  #
@@ -17,8 +17,8 @@ module ::Magnets::HTML::ViewModel::ClassInstance
     
     case optional_view_and_paths_or_parts_or_descriptors[ 0 ]
 
-      when ::Magnets::HTML::View::ClassInstance, 
-           ::Magnets::HTML::ViewModel::ClassInstance
+      when ::Perspective::HTML::View::ClassInstance, 
+           ::Perspective::HTML::ViewModel::ClassInstance
 
         view_class = optional_view_and_paths_or_parts_or_descriptors.shift
 
@@ -30,7 +30,7 @@ module ::Magnets::HTML::ViewModel::ClassInstance
     attr_view( binding_name, view_class, & configuration_proc )
     
     # Create pathmap instance.
-    pathmap = ::Magnets::PathMap.new( binding_name, *paths_or_parts_or_descriptors )
+    pathmap = ::Perspective::Request::PathMap.new( binding_name, *paths_or_parts_or_descriptors )
     
     binding_instance = __bindings__[ binding_name ]
     
@@ -58,9 +58,9 @@ module ::Magnets::HTML::ViewModel::ClassInstance
     view_model_class = nil
     
     case optional_view_model_and_paths_or_parts_or_descriptors[ 0 ]
-      when ::Magnets::HTML::ViewModel::ClassInstance
+      when ::Perspective::HTML::ViewModel::ClassInstance
         view_model_class = optional_view_model_and_paths_or_parts_or_descriptors.shift
-      when ::Magnets::HTML::View::ClassInstance
+      when ::Perspective::HTML::View::ClassInstance
         raise ::ArgumentError, __method__.to_s + ' requires a View-Model, not a View.'
     end
 
@@ -73,11 +73,11 @@ module ::Magnets::HTML::ViewModel::ClassInstance
     elsif block_given?
       
       view_model_class = ::Class.new do
-        include ::Magnets::HTML::ViewModel
+        include ::Perspective::HTML::ViewModel
         attr_order self
       end
       
-      constant_name = 'MagnetsViewModel__' + binding_name.to_s
+      constant_name = 'PerspectiveViewModel__' + binding_name.to_s
       const_set( constant_name, view_model_class )
       
       view_model_class.module_eval( & sub_declaration_proc )
@@ -88,7 +88,7 @@ module ::Magnets::HTML::ViewModel::ClassInstance
     attr_view( binding_name, view_model_class )
     
     # Create pathmap instance.
-    pathmap = ::Magnets::PathMap::BasePath.new( binding_name, *paths_or_parts_or_descriptors )
+    pathmap = ::Perspective::Request::PathMap::BasePath.new( binding_name, *paths_or_parts_or_descriptors )
 
     binding_instance = __bindings__[ binding_name ]
     
@@ -135,7 +135,7 @@ module ::Magnets::HTML::ViewModel::ClassInstance
   
   def path( *descriptors )
     
-    return ::Magnets::Path.new( *descriptors )
+    return ::Perspective::Request::Path.new( *descriptors )
     
   end
   

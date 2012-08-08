@@ -1,9 +1,9 @@
 
-require_relative '../../lib/magnets-html-view_model.rb'
+require_relative '../../lib/perspective/html/view_model.rb'
 
-require_relative '../../../magnets-html-elements/lib/magnets-html-elements.rb'
+require_relative '../../../perspective/html/elements/lib/perspective/html/elements.rb'
 
-describe ::Magnets::HTML::ViewModel do
+describe ::Perspective::HTML::ViewModel do
   
   ##################
   #  attr_pathmap  #
@@ -11,9 +11,9 @@ describe ::Magnets::HTML::ViewModel do
   
   it 'can model a dynamic view based on view bindings and conditional pathmap bindings' do
 
-    class ::Magnets::HTML::ViewModel::Mock
+    class ::Perspective::HTML::ViewModel::Mock
 
-      include ::Magnets::HTML::ViewModel
+      include ::Perspective::HTML::ViewModel
 
       attr_pathmap :binding_name, 'some/path' do
         self.binding_name = 'some text'
@@ -21,23 +21,23 @@ describe ::Magnets::HTML::ViewModel do
 
       has_binding?( :binding_name ).should == true
       binding_name.__view_class__.should == nil
-      binding_name.__pathmap__.is_a?( ::Magnets::PathMap ).should == true
+      binding_name.__pathmap__.is_a?( ::Perspective::Request::PathMap ).should == true
       
-      attr_pathmap :other_binding_name, ::Magnets::HTML::Elements::Text::Paragraph, 'some/other/path' do |view_instance|
+      attr_pathmap :other_binding_name, ::Perspective::HTML::Elements::Text::Paragraph, 'some/other/path' do |view_instance|
         self.other_binding_name = :value
         other_binding_name_view.content = 'some other text'
       end
 
       has_binding?( :other_binding_name ).should == true
-      other_binding_name.__view_class__.should == ::Magnets::HTML::Elements::Text::Paragraph
+      other_binding_name.__view_class__.should == ::Perspective::HTML::Elements::Text::Paragraph
 
       attr_order :binding_name, :other_binding_name
 
 
     end
 
-    ::Magnets.root = ::Magnets::HTML::ViewModel::Mock
-    mock_request = ::Rack::MockRequest.new( ::Magnets )
+    ::Perspective.root = ::Perspective::HTML::ViewModel::Mock
+    mock_request = ::Rack::MockRequest.new( ::Perspective )
     mock_response = mock_request.get( 'some/other/path' )
 
     mock_response.body.should == '<!DOCTYPE html>
@@ -46,8 +46,8 @@ describe ::Magnets::HTML::ViewModel do
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 	<body>
-		<div class="Magnets::HTML::ViewModel::Mock">
-			<p class="Magnets::HTML::Elements::Text::Paragraph" id="other_binding_name">some other text</p>
+		<div class="Perspective::HTML::ViewModel::Mock">
+			<p class="Perspective::HTML::Elements::Text::Paragraph" id="other_binding_name">some other text</p>
 		</div>
 	</body>
 </html>
@@ -61,7 +61,7 @@ describe ::Magnets::HTML::ViewModel do
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 	<body>
-		<div class="Magnets::HTML::ViewModel::Mock">some text</div>
+		<div class="Perspective::HTML::ViewModel::Mock">some text</div>
 	</body>
 </html>
 '

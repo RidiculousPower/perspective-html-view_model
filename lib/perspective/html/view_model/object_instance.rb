@@ -1,7 +1,7 @@
 
-module ::Magnets::HTML::ViewModel::ObjectInstance
+module ::Perspective::HTML::ViewModel::ObjectInstance
 
-  include ::Magnets::HTML::View::ObjectInstance
+  include ::Perspective::HTML::View::ObjectInstance
 
   include ::CascadingConfiguration::Array::Unique
 
@@ -54,7 +54,7 @@ module ::Magnets::HTML::ViewModel::ObjectInstance
       
         __pathstack__.each do |this_binding_instance|
 
-          if this_binding_instance.__pathmap__.match( ::Magnets.request.path )
+          if this_binding_instance.__pathmap__.match( ::Perspective.request.path )
 
     	      # lazy initialize binding (and run config proc)
     	      this_binding_instance.__initialize_container__( true )
@@ -74,7 +74,7 @@ module ::Magnets::HTML::ViewModel::ObjectInstance
     	  # if we have a pathmap we render conditionally
     	  if pathmap = binding_instance.__pathmap__
 	    
-    	    if pathmap.match( ::Magnets.request.path )
+    	    if pathmap.match( ::Perspective.request.path )
 
     	      # lazy initialize binding (and run config proc)
     	      binding_instance.__initialize_container__

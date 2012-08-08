@@ -1,7 +1,7 @@
 
-module ::Magnets::HTML::ViewModel::Bindings::InstanceBinding
+module ::Perspective::HTML::ViewModel::Bindings::InstanceBinding
 
-  include ::Magnets::HTML::ViewModel::Bindings
+  include ::Perspective::HTML::ViewModel::Bindings
   
   #########################################
   #  __validate_binding_name_for_order__  #
