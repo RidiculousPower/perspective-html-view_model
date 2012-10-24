@@ -57,7 +57,7 @@ module ::Perspective::HTML::ViewModel::ObjectInstance
           if this_binding_instance.__pathmap__.match( ::Perspective.request.path )
 
     	      # lazy initialize binding (and run config proc)
-    	      this_binding_instance.__initialize_container__( true )
+    	      this_binding_instance.__initialize_container_from_class__
             this_binding_instance.__configure_container__
 
     	      # render
@@ -77,7 +77,7 @@ module ::Perspective::HTML::ViewModel::ObjectInstance
     	    if pathmap.match( ::Perspective.request.path )
 
     	      # lazy initialize binding (and run config proc)
-    	      binding_instance.__initialize_container__
+    	      binding_instance.__initialize_container_from_class__
             binding_instance.__configure_container__
 
     	      # render

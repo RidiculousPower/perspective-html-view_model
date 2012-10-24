@@ -1,7 +1,7 @@
 
 require_relative '../../lib/perspective/html/view_model.rb'
 
-require_relative '../../../perspective/html/elements/lib/perspective/html/elements.rb'
+require_relative '../../../perspective-html-elements/lib/perspective/html/elements.rb'
 
 describe ::Perspective::HTML::ViewModel do
   
@@ -16,7 +16,7 @@ describe ::Perspective::HTML::ViewModel do
       include ::Perspective::HTML::ViewModel
 
       attr_pathmap :binding_name, 'some/path' do
-        self.binding_name = 'some text'
+        self.binding_name.value = 'some text'
       end
 
       has_binding?( :binding_name ).should == true
@@ -24,8 +24,8 @@ describe ::Perspective::HTML::ViewModel do
       binding_name.__pathmap__.is_a?( ::Perspective::Request::PathMap ).should == true
       
       attr_pathmap :other_binding_name, ::Perspective::HTML::Elements::Text::Paragraph, 'some/other/path' do |view_instance|
-        self.other_binding_name = :value
-        other_binding_name_view.content = 'some other text'
+        self.other_binding_name.value = :value
+        other_binding_name.view.content.value = 'some other text'
       end
 
       has_binding?( :other_binding_name ).should == true
