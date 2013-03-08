@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 
 require_relative '../../lib/perspective/html/view_model.rb'
 
@@ -9,27 +10,27 @@ describe ::Perspective::HTML::ViewModel do
   #  attr_pathmap  #
   ##################
   
-  it 'can model a dynamic view based on view bindings and conditional pathmap bindings' do
+  it 'will model a dynamic view based on view bindings and conditional pathmap bindings' do
 
     class ::Perspective::HTML::ViewModel::Mock
 
       include ::Perspective::HTML::ViewModel
 
       attr_pathmap :binding_name, 'some/path' do
-        self.binding_name.value = 'some text'
+        self.binding_name.«value» = 'some text'
       end
 
       has_binding?( :binding_name ).should == true
-      binding_name.__view_class__.should == nil
-      binding_name.__pathmap__.is_a?( ::Perspective::Request::PathMap ).should == true
+      binding_name.«view_class».should == nil
+      binding_name.«pathmap».is_a?( ::Perspective::Request::Pathmap ).should == true
       
       attr_pathmap :other_binding_name, ::Perspective::HTML::Elements::Text::Paragraph, 'some/other/path' do |view_instance|
-        self.other_binding_name.value = :value
-        other_binding_name.view.content.value = 'some other text'
+        self.other_binding_name.«value» = :value
+        other_binding_name.view.content.«value» = 'some other text'
       end
 
       has_binding?( :other_binding_name ).should == true
-      other_binding_name.__view_class__.should == ::Perspective::HTML::Elements::Text::Paragraph
+      other_binding_name.«view_class».should == ::Perspective::HTML::Elements::Text::Paragraph
 
       attr_order :binding_name, :other_binding_name
 
