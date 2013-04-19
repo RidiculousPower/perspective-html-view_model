@@ -16,15 +16,5 @@ module ::Perspective::HTML::ViewModel::SingletonInstance
     return ::Perspective::Request::Path.new( *descriptors )
     
   end
-  
-  #######################################
-  #  «validate_binding_name_for_order»  #
-	#######################################
-	
-	def «validate_binding_name_for_order»( binding_or_name )
-	  
-	  super unless binding_or_name.equal?( self )
-	  
-  end
 	
 end

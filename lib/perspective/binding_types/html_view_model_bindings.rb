@@ -3,6 +3,12 @@
 module ::Perspective::BindingTypes::HTMLViewModelBindings
   
   ###############
+  #  attr_self  #
+  ###############
+  
+  define_binding_type( :self, :nil_property )
+
+  ###############
   #  attr_path  #
   ###############
   

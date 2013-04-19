@@ -3,7 +3,6 @@
 module ::Perspective::HTML::ViewModel::Bindings
   
   include ::Perspective::HTML::ViewModel::Configuration
-  include ::Perspective::HTML::ViewModel::ObjectAndBindingInstance
 
   include ::CascadingConfiguration::Setting
   
@@ -12,7 +11,7 @@ module ::Perspective::HTML::ViewModel::Bindings
   #  «pathmap»=  #
   ################
 
-  attr_configuration :«pathmap»
+  attr_instance_configuration :«pathmap»
 
   #############
   #  pathmap  #
@@ -25,5 +24,5 @@ module ::Perspective::HTML::ViewModel::Bindings
   ##############
 
   alias_method :pathmap=, :«pathmap»=
-  
+
 end

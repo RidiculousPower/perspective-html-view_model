@@ -7,4 +7,6 @@ module ::Perspective::HTML::ViewModel
   end
   module ClassBindings
   end
+  module InstanceBindings
+  end
 end

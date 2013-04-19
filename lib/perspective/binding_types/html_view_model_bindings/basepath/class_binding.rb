@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 
-module ::Perspective::BindingTypes::HTMLViewModelBindings::Basepath::ClassBinding
+class ::Perspective::BindingTypes::HTMLViewModelBindings::Basepath::ClassBinding
   
   include ::Perspective::HTML::ViewModel::ClassBindings::Basepath
   

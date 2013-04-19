@@ -20,5 +20,5 @@ module ::Perspective::HTML::ViewModel
 
 end
 
-# ::Perspective::HTML::ViewModel::AnonymousClass uses ::Perspective::HTML::ViewModel so has to be loaded last
-require_relative 'view_model/anonymous_class.rb'
+# ::Perspective::HTML::ViewModel::AnonymousViewModel uses ::Perspective::HTML::ViewModel so has to be loaded last
+require_relative 'view_model/anonymous_view_model.rb'
