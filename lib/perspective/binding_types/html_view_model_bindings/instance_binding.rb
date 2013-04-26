@@ -18,7 +18,7 @@ module ::Perspective::BindingTypes::HTMLViewModelBindings::InstanceBinding
       
       if pathmap.match( ::Perspective.request.path )
         # lazy initialize binding (and run config proc)
-        «initialize_container_from_class»
+        initialize«container_from_class»
         «configure_container»
         html_node = super
       end

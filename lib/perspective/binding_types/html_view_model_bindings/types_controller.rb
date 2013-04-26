@@ -2,14 +2,14 @@
 
 class ::Perspective::BindingTypes::HTMLViewModelBindings::TypesController
 
-  #############################
-  #  self.new_class_bindings  #
-  #############################
+  ##############################
+  #  self.new«class_bindings»  #
+  ##############################
   
   ###
   # Can be overridden in BindingType modules.
   #
-  def self.new_class_bindings( binding_type, bound_to_container, binding_name, *args, & configuration_proc )
+  def self.new«class_bindings»( binding_type, bound_to_container, binding_name, *args, & configuration_proc )
     
     view_class = nil
     view_class = args.shift if ::Perspective::HTML::View::SingletonInstance === args[ 0 ]

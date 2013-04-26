@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 
-files = [
+[
 
   'view_model/class_bindings/basepath',
 
@@ -21,6 +21,4 @@ files = [
   'view_model/singleton_instance',
   'view_model/object_instance'
 
-]
-
-files.each { |this_file| require_relative( this_file << '.rb' ) }
+].each { |this_file| require_relative( this_file << '.rb' ) }
