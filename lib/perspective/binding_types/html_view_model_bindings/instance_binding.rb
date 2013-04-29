@@ -15,7 +15,7 @@ module ::Perspective::BindingTypes::HTMLViewModelBindings::InstanceBinding
     
     # if we have a pathmap we render conditionally
     if pathmap = «pathmap»
-      
+
       if pathmap.match( ::Perspective.request.path )
         # lazy initialize binding (and run config proc)
         initialize«container_from_class»

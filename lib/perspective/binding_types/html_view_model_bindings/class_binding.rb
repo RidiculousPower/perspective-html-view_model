@@ -11,7 +11,7 @@ module ::Perspective::BindingTypes::HTMLViewModelBindings::ClassBinding
   def initialize«new_between_common»( binding_name, view_class = nil, *path_parts )
 
     super( binding_name, view_class )
-    
+
     self.«pathmap» = ::Perspective::Request::Pathmap.new( «name», *path_parts )
 
   end
